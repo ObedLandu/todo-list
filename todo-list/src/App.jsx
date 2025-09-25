@@ -17,6 +17,13 @@ export default function App() {
     setTasks(newTasks);
   };
 
+  const isDeleteCliquedHandler = (index) => {
+    console.log("delete");
+    const newTasks = [...tasks];
+    newTasks.splice(index, 1);
+    setTasks(newTasks);
+  };
+
   return (
     <div className="App">
       <header>
@@ -37,6 +44,7 @@ export default function App() {
             content={task.content}
             isDone={task.isDone}
             doneCliqued={() => isDoneCliquedHandler(index)}
+            deleteCliqued={() => isDeleteCliquedHandler(index)}
           />
         );
       })}
