@@ -9,7 +9,13 @@ export default function App() {
   ]);
   //fonction pour ajouter une tache
 
-  //fonction pour supprimer une tache
+  //fonctions
+  const isDoneCliquedHandler = (index) => {
+    console.log("click");
+    const newTasks = [...tasks];
+    newTasks[index].isDone = !tasks[index].isDone;
+    setTasks(newTasks);
+  };
 
   return (
     <div className="App">
@@ -25,7 +31,14 @@ export default function App() {
       </div>
       {/* liste des taches */}
       {tasks.map((task, index) => {
-        return <Task key={index} />;
+        return (
+          <Task
+            key={index}
+            content={task.content}
+            isDone={task.isDone}
+            doneCliqued={() => isDoneCliquedHandler(index)}
+          />
+        );
       })}
     </div>
   );
